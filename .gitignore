@@ -35,3 +35,5 @@ nosetests.xml
 .pydevproject
 
 .*
+index.wsgic
+site-packages/
