@@ -37,3 +37,4 @@ nosetests.xml
 .*
 index.wsgic
 site-packages/
+*~

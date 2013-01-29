@@ -1,15 +1,100 @@
 <!doctype html>
 <html>
 <head>
+<title>CSV to XLS 转换工具</title>
+<meta charset="utf-8" />
+<link href="http://lib.sinaapp.com/js/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/bootstrap-fileupload.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn, .jumbotron .uneditable-input {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+    </style>
+
+<script src="http://lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script src="http://lib.sinaapp.com/js/bootstrap/latest/js/bootstrap.min.js"></script>
+<script src="/static/bootstrap-fileupload.js"></script>
 </head>
 <body>
 
-<form action="/convert" enctype="multipart/form-data" method="post">
 
-<input type="file" name="csvfile">
-<input type="submit" value="Send">
+    <div class="container-narrow">
 
-</form>
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+        </ul>
+        <h3 class="muted"></h3>
+      </div>
 
+      <hr>
+
+      <div class="jumbotron">
+        <h1>CSV to XLS 转换</h1>
+        <p class="lead">解决CSV 大数（超过15位） 导入 Excel 时精度丢失的问题，到这里转换后的xls文件再也不会有这样问题了</p>
+        <form action="/convert" enctype="multipart/form-data" method="post">
+
+	<div class="fileupload fileupload-new" data-provides="fileupload">
+	<div class="input-append">
+	<div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> 
+	<span class="fileupload-preview"></span></div>
+	<span class="btn btn-file">
+	<span class="fileupload-new">打开</span>
+	<span class="fileupload-exists">更换</span>
+	<input type="file" name="csvfile" /></span>
+	<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
+	<input type="submit" value="转换" class="btn btn-primary">
+	</div>
+	</div>
+
+
+	</form>
+      </div>
+
+	
+      <div class="row-fluid marketing">
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p class="pull-right"><img src="http://static.sae.sina.com.cn/image/poweredby/117X12px.gif"/> &copy; <a href="weibo.com/tg123">tgic</a> 2013</p>
+      </div>
+
+    </div> <!-- /container -->
+<h1></h1>
+
+<a href="https://github.com/tg123/csv2xls_sae"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 </body>
 </html>
