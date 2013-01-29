@@ -5,7 +5,7 @@ root = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(root, 'site-packages'))
 
 
-from bottle import Bottle, route, run, template, static_file, request , response
+from bottle import Bottle, static_file, request , response, redirect
 
 from csv2xls import xls
 from os import remove
@@ -16,8 +16,9 @@ from StringIO import StringIO
 
 app = Bottle()
 
+@app.error(404)
 @app.route('/')
-def index():
+def index(error = None):
     return static_file('index.html', root = '.');
 
 
@@ -42,6 +43,6 @@ def convert():
         return data
         #return xlsfile sae cant send file ...
 
-    return 'missiing'
+    return redirect('/')
 
 application = sae.create_wsgi_app(app)
