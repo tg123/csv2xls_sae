@@ -6,13 +6,17 @@ sys.path.insert(0, os.path.join(root, 'site-packages'))
 
 
 from bottle import Bottle, static_file, request , response, redirect
-
 from csv2xls import xls
-from os import remove
-
 import sae
-
 from StringIO import StringIO
+
+def ensure_encoding(s, encodings=('gbk', 'utf8')):
+    for encoding in encodings:
+        try:
+            return s.decode(encoding)
+        except UnicodeDecodeError:
+            pass
+    return s.decode('ascii', 'ignore')
 
 app = Bottle()
 
@@ -32,7 +36,7 @@ def convert():
         xlsobj.options.outfile_name = 'ANOTHERFAKENAME'
         xlsobj.options.set_default_options()
         xlsobj.options.check_options()
-        xlsobj.process_csvs(csvfile.file.read().strip())
+        xlsobj.process_csvs(ensure_encoding(csvfile.file.read().strip()))
         xlsfile = xlsobj.csvs_2_xls()
         data = xlsfile.getvalue()
         xlsfile.close()
