@@ -404,7 +404,10 @@ class xls(object):
                     else: 
                         self.xls_object.xls_sheet.write(r_xls,c_xls,external_non_available_string,current_style) 
                 if convert_to_float in ["never"]: 
-                        self.xls_object.xls_sheet.write(r_xls,c_xls,cell,current_style) 
+                    cell = cell.strip()
+                    if cell.startswith('"') and cell.endswith('"'):
+                        cell = cell[1:-1] 
+                    self.xls_object.xls_sheet.write(r_xls,c_xls,cell,current_style) 
                     
     def export_column_names_to_xls(self):
         current_style = pyexcelerator.XFStyle()
